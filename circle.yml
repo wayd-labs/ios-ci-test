@@ -5,7 +5,7 @@ dependencies:
   pre:
      - brew upgrade xctool
      - sudo gem install cocoapods --version 0.38.2
-#     - sudo gem install slop --version 3.6.0
+     - sudo gem install slop --version 3.6.0
      - sudo gem install bwoken --pre
 #    # CocoaPods sometimes has issues using caches
 #    # between different versions of CocoaPods.
