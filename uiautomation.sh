@@ -1,4 +1,6 @@
-. ../options.sh
+if [ -z CI]; then
+   . ../options.sh
+fi
   bundle_dir=$BUILD_DIR/Build/Products/Debug-iphonesimulator/$APPNAME.app
   automation_script="$1"
   language="$2"
