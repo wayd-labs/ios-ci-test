@@ -19,15 +19,15 @@ machine:
 
 test:
   override:
-    - xctool
-      -reporter pretty
-      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-      -sdk iphonesimulator
-      -workspace "$XCODE_WORKSPACE"
-      -scheme "$XCODE_SCHEME"
-      -derivedDataPath "$BUILD_DIR"
-      build
-    - sh ../uiautomation.sh build/Build/Products/Debug-iphonesimulator/ios-ci-test.app ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
+    - xctool help
+#      -reporter pretty
+#      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+#      -sdk iphonesimulator
+#      -workspace "$XCODE_WORKSPACE"
+#      -scheme "$XCODE_SCHEME"
+#      -derivedDataPath "$BUILD_DIR"
+#      build
+#    - sh ../uiautomation.sh build/Build/Products/Debug-iphonesimulator/ios-ci-test.app ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
 
 deployment:
   staging:

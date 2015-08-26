@@ -7,7 +7,7 @@ xctool -reporter pretty \
   -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' \
   -sdk iphonesimulator \
   -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" \
-  -derivedDataPath "$BUILD_DIR" \
+  -derivedDataPath "$BUILD_DIR1" \
   clean build
 #  PRODUCT_NAME=app\
 #  clean build
