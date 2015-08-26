@@ -12,13 +12,21 @@ general:
 machine:
   environment:
     XCODE_SCHEME: ios-ci-test
+    BUILD_DIR: build
     LANG: en_US.UTF-8
   xcode:
     version: "6.4"
 
 test:
   override:
-    - ../uiautomation/ui-screen-shooter/ui-screen-shooter.sh . ../uiautomation/tests.js
+    - xctool
+      -reporter pretty
+      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+      -sdk iphonesimulator
+      -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME"
+      -derivedDataPath "$BUILD_DIR"
+      build
+    - sh ../uiautomation.sh build/Build/Products/Debug-iphonesimulator/ios-ci-test.app ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
 
 deployment:
   staging:

@@ -1,3 +1,4 @@
+. ../options.sh
 #!/bin/bash
 # Copyright (c) 2012 Jonathan Penn (http://cocoamanifest.net/)
 
@@ -47,14 +48,17 @@ function main {
     fi
   fi
 
-  _check_destination
+  rm -rf $tmp_dir
   _check_ui_script
   _close_sim
   _reset_target_sim
-# _reset_all_sim
-  #[ ! -d "$bundle_dir" ] && _xcode clean build
-#[ ! -d "$bundle_dir" ] && _xcode build
-  _xcode clean build
+  if [ -z "$CI"]; then
+    sh ../xctool.sh
+  fi
+
+  cp -r $BUILD_DIR/Build/Products/Debug-iphonesimulator/app.app build/
+
+  bundle_dir="$BUILD_DIR/app.app"
 
   for simulator in "${simulators[@]}"; do
     for language in $languages; do
@@ -73,28 +77,13 @@ function main {
 # Global variables to keep track of where everything goes
 tmp_dir="$startpath/tmp"
 build_dir="$tmp_dir/screen_shooter"
-bundle_dir="$build_dir/app.app"
 base="$(find $search -maxdepth 1 -name '*.xcworkspace' -print -quit)"
 base=$(basename $base .xcworkspace)
-bundle_dir="$build_dir/$base.app"
 trace_results_dir="$build_dir/traces"
 
-function _check_destination {
-  # Abort if the destination directory already exists. Better safe than sorry.
-
-  if [ -z "$destination" ]; then
-    destination="$HOME/Desktop/screenshots"
-  fi
-  if [ -d "$destination" ]; then
-    rm -rf "$destination"
-    #echo "Destination directory \"$destination\" already exists! Aborting."
-    #exit 1
-  fi
-}
 
 function _check_ui_script {
   # Abort if the UI script does not exist.
-
   if [ -z "$ui_script" ]; then
     ui_script="./config-automation.js"
   fi
@@ -106,60 +95,6 @@ function _check_ui_script {
       echo "Config-automation does not exist! Aborting."
       exit 1
     fi
-  fi
-}
-
-function _xcode {
-  # A wrapper around `xcodebuild` that tells it to build the app in the temp
-  # directory. If your app uses workspaces or special schemes, you'll need to
-  # specify them here.
-  #
-  # Use `man xcodebuild` for more information on how to build your project.
-  if test -n "$(find $search -maxdepth 1 -name '*.xcworkspace' -print -quit)"
-  then
-    base=$(basename *.xcworkspace .xcworkspace)
-    base="$(find $search -maxdepth 1 -name '*.xcworkspace' -print -quit)"
-    base=$(basename $base .xcworkspace)
-    
-    # First build omits PRODUCT_NAME
-    # Do NOT ask me why you need to build this twice for it to work
-    # or how I became to know this fact
-    pushd .
-    cd $search
-    xctool -reporter pretty \
-      -sdk "iphonesimulator$ios_version" \
-      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
-      DSTROOT=$build_dir \
-      OBJROOT=$build_dir \
-      SYMROOT=$build_dir \
-      CONFIGURATION_BUILD_DIR="$build_dir/build" \
-      "$@"
-#    xcodebuild -sdk "iphonesimulator$ios_version" \
-#      CONFIGURATION_BUILD_DIR="$build_dir/build" \
-#      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
-#      DSTROOT=$build_dir \
-#      OBJROOT=$build_dir \
-#      SYMROOT=$build_dir \
-#      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
-#      ONLY_ACTIVE_ARCH=NO \
-#    "$@"
-#    xcodebuild -sdk "iphonesimulator$ios_version" \
-#      CONFIGURATION_BUILD_DIR="$build_dir/build" \
-#      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
-#      DSTROOT=$build_dir \
-#      OBJROOT=$build_dir \
-#      SYMROOT=$build_dir \
-#      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
-#      ONLY_ACTIVE_ARCH=NO \
-#    "$@"
-    cp -r "$build_dir/build/$base.app" "$build_dir"
-    bundle_dir="$build_dir/$base.app"
-    popd
-  else
-    xcodebuild -sdk "iphonesimulator$ios_version" \
-      CONFIGURATION_BUILD_DIR=$build_dir \
-      PRODUCT_NAME=app \
-    "$@"
   fi
 }
 
