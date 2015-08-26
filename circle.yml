@@ -4,8 +4,8 @@ dependencies:
   pre:
      - brew upgrade xctool
      - sudo gem install cocoapods --version 0.38.2
-     - sudo gem install slop --version 3.6.0
-     - sudo gem install bwoken --pre
+#     - sudo gem install slop --version 3.6.0
+#     - sudo gem install bwoken --pre
 #    # CocoaPods sometimes has issues using caches
 #    # between different versions of CocoaPods.
 #    - pod setup
@@ -25,21 +25,21 @@ machine:
     version: "6.4"
 
 test:
-#  override:
-#    - xctool
-#      -reporter pretty
-#      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
-#      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
-#      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-#      -sdk iphonesimulator
-#      -workspace "$XCODE_WORKSPACE"
-#      -scheme "$XCODE_SCHEME"
-#      -configuration Debug
-#      -derivedDataPath "$BUILD_DIR"
-#      build
-#    - sh ../uiautomation.sh ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
   override:
-    - bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
+    - xctool
+      -reporter pretty
+      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
+      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
+      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+      -sdk iphonesimulator
+      -workspace "$XCODE_WORKSPACE"
+      -scheme "$XCODE_SCHEME"
+      -configuration Debug
+      -derivedDataPath "$BUILD_DIR"
+      build
+    - sh ../uiautomation.sh ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
+#  override:
+#    - bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
 
 
 deployment:
