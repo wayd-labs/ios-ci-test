@@ -39,7 +39,7 @@ test:
 #      build
 #    - sh ../uiautomation.sh ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
   override:
-    bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
+    - bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
 
 
 deployment:
