@@ -1,0 +1,1 @@
+xctool -reporter pretty -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' -sdk iphonesimulator -workspace 'ios-ci-test/ios-ci-test.xcworkspace' -scheme "ios-ci-test"  build archive -archivePath '/Users/alarin/Documents/projects/ios-ci-test/build'

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73AEFCBD1B8DBFBF00551D60 /* uiautomation in Resources */ = {isa = PBXBuildFile; fileRef = 73AEFCBC1B8DBFBF00551D60 /* uiautomation */; };
 		73D44F911B8DB8CA0059A8E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D44F901B8DB8CA0059A8E1 /* AppDelegate.swift */; };
 		73D44F931B8DB8CA0059A8E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D44F921B8DB8CA0059A8E1 /* ViewController.swift */; };
 		73D44F961B8DB8CA0059A8E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73D44F941B8DB8CA0059A8E1 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		52915E2E762D14F2384AB590 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		73AEFCBC1B8DBFBF00551D60 /* uiautomation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = uiautomation; sourceTree = "<group>"; };
 		73D44F8B1B8DB8CA0059A8E1 /* ios-ci-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-ci-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D44F8F1B8DB8CA0059A8E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73D44F901B8DB8CA0059A8E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		73D44F821B8DB8CA0059A8E1 = {
 			isa = PBXGroup;
 			children = (
+				73AEFCBC1B8DBFBF00551D60 /* uiautomation */,
 				73D44F8D1B8DB8CA0059A8E1 /* ios-ci-test */,
 				73D44FA31B8DB8CA0059A8E1 /* ios-ci-testTests */,
 				73D44F8C1B8DB8CA0059A8E1 /* Products */,
@@ -221,6 +224,7 @@
 				73D44F961B8DB8CA0059A8E1 /* Main.storyboard in Resources */,
 				73D44F9B1B8DB8CA0059A8E1 /* LaunchScreen.xib in Resources */,
 				73D44F981B8DB8CA0059A8E1 /* Images.xcassets in Resources */,
+				73AEFCBD1B8DBFBF00551D60 /* uiautomation in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
