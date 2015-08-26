@@ -17,36 +17,42 @@ general:
 
 machine:
   environment:
+    SCRIPTS: '../_ios_ci/scripts/'
+    TESTS: '../_ios_ci/tests'
+    CERTS: '../_ios_ci/certs'
+    BUILD_DIR: build
+    LANG: en_US.UTF-8
+    DEVELOPER_NAME: 'iPhone Developer: WAYD TIMASHEV'
+
     XCODE_WORKSPACE: 'ios-ci-test.xcworkspace'
     XCODE_SCHEME: ios-ci-test
     APPNAME: ios-ci-test
-    BUILD_DIR: build
-    LANG: en_US.UTF-8
+
   xcode:
     version: "6.4"
 
 test:
-#  override:
-#    - xctool
-#      -reporter pretty
-#      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
-#      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
-#      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-#      -sdk iphonesimulator
-#      -workspace "$XCODE_WORKSPACE"
-#      -scheme "$XCODE_SCHEME"
-#      -configuration Debug
-#      -derivedDataPath "$BUILD_DIR"
-#      build
-#    - sh ../uiautomation.sh ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
   override:
-    - bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
+    - xctool
+      -reporter pretty
+      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
+      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
+      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+      -sdk iphonesimulator
+      -workspace "$XCODE_WORKSPACE"
+      -scheme "$XCODE_SCHEME"
+      -configuration Debug
+      -derivedDataPath "$BUILD_DIR"
+      build
+    - sh $SCRIPTS/uiautomation.sh $TESTS/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
+#  override:
+#    - bwoken test --simulator --device "iPhone 6 (8.4 Simulator)"
 
 
 deployment:
   staging:
-    branch:  /feature\/.*/
+    branch:  /*/
     commands: 
-      - sh ../scripts/add-key.sh
-      - sh ../scripts/crashlytics.sh
-      - sh ../scripts/remove-key.sh
+      - sh $SCRIPTS/add-key.sh
+      - sh $SCRIPTS/crashlytics.sh
+      - sh $SCRIPTS/remove-key.sh
