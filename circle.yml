@@ -20,6 +20,10 @@ machine:
   xcode:
     version: "6.4"
 
+dependencies:
+  cache_directories:
+    - build
+
 test:
   override:
     - xctool

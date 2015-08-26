@@ -4,7 +4,7 @@
   language="$2"
   simulator="$3"
 
-  trace_results_dir="$CIRCLE_ARTIFACTS"
+  trace_results_dir="$CIRCLE_ARTIFACTS/uiautomation"
 
   echo "Running automation script \"$automation_script\"
           for \"$simulator\"
