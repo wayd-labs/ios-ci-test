@@ -1,4 +1,6 @@
 dependencies:
+  cache_directories:
+    - build
   pre:
      - brew upgrade xctool
 #    - sudo gem install cocoapods --version 0.38.2
@@ -19,10 +21,6 @@ machine:
     LANG: en_US.UTF-8
   xcode:
     version: "6.4"
-
-dependencies:
-  cache_directories:
-    - build
 
 test:
   override:
