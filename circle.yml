@@ -12,6 +12,7 @@ general:
 
 machine:
   environment:
+    XCODE_WORKSPACE='ios-ci-test.xcworkspace'
     XCODE_SCHEME: ios-ci-test
     BUILD_DIR: build
     LANG: en_US.UTF-8
@@ -22,6 +23,8 @@ test:
   override:
     - xctool
       -reporter pretty
+      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
+      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
       -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
       -sdk iphonesimulator
       -workspace "$XCODE_WORKSPACE"
