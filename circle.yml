@@ -18,7 +18,7 @@ machine:
 
 test:
   override:
-    uiautomation/ui-screen-shooter/ui-screen-shooter.sh ios-ci-test/ uiautomation/tests.js
+    - uiautomation/ui-screen-shooter/ui-screen-shooter.sh ios-ci-test/ uiautomation/tests.js
 
 deployment:
   staging:
