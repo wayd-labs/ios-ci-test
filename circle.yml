@@ -1,5 +1,6 @@
-#dependencies:
-#  pre:
+dependencies:
+  pre:
+     - sudo gem install xctool --version 0.2.4
 #    - sudo gem install cocoapods --version 0.38.2
 #    # CocoaPods sometimes has issues using caches
 #    # between different versions of CocoaPods.
@@ -19,14 +20,15 @@ machine:
 
 test:
   override:
-    - xctool help
-#      -reporter pretty
-#      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-#      -sdk iphonesimulator
-#      -workspace "$XCODE_WORKSPACE"
-#      -scheme "$XCODE_SCHEME"
-#      -derivedDataPath "$BUILD_DIR"
-#      build
+    - xctool
+      -reporter pretty
+      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+      -sdk iphonesimulator
+      -workspace "$XCODE_WORKSPACE"
+      -scheme "$XCODE_SCHEME"
+      -configuration Debug
+      -derivedDataPath "$BUILD_DIR"
+      build
 #    - sh ../uiautomation.sh build/Build/Products/Debug-iphonesimulator/ios-ci-test.app ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
 
 deployment:
