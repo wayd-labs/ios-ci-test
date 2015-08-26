@@ -53,8 +53,8 @@ function main {
   _reset_target_sim
 # _reset_all_sim
   #[ ! -d "$bundle_dir" ] && _xcode clean build
-  [ ! -d "$bundle_dir" ] && _xcode build
-  #_xcode build
+#[ ! -d "$bundle_dir" ] && _xcode build
+  _xcode clean build
 
   for simulator in "${simulators[@]}"; do
     for language in $languages; do
@@ -126,24 +126,32 @@ function _xcode {
     # or how I became to know this fact
     pushd .
     cd $search
-    xcodebuild -sdk "iphonesimulator$ios_version" \
-      CONFIGURATION_BUILD_DIR="$build_dir/build" \
+    xctool -reporter pretty \
+      -sdk "iphonesimulator$ios_version" \
       -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
       DSTROOT=$build_dir \
       OBJROOT=$build_dir \
       SYMROOT=$build_dir \
-      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
-      ONLY_ACTIVE_ARCH=NO \
-    "$@"
-    xcodebuild -sdk "iphonesimulator$ios_version" \
       CONFIGURATION_BUILD_DIR="$build_dir/build" \
-      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
-      DSTROOT=$build_dir \
-      OBJROOT=$build_dir \
-      SYMROOT=$build_dir \
-      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
-      ONLY_ACTIVE_ARCH=NO \
-    "$@"
+      "$@"
+#    xcodebuild -sdk "iphonesimulator$ios_version" \
+#      CONFIGURATION_BUILD_DIR="$build_dir/build" \
+#      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
+#      DSTROOT=$build_dir \
+#      OBJROOT=$build_dir \
+#      SYMROOT=$build_dir \
+#      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
+#      ONLY_ACTIVE_ARCH=NO \
+#    "$@"
+#    xcodebuild -sdk "iphonesimulator$ios_version" \
+#      CONFIGURATION_BUILD_DIR="$build_dir/build" \
+#      -workspace "$base.xcworkspace" -scheme "$base" -configuration Debug \
+#      DSTROOT=$build_dir \
+#      OBJROOT=$build_dir \
+#      SYMROOT=$build_dir \
+#      GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SCREENSHOTS=1' \
+#      ONLY_ACTIVE_ARCH=NO \
+#    "$@"
     cp -r "$build_dir/build/$base.app" "$build_dir"
     bundle_dir="$build_dir/$base.app"
     popd
