@@ -12,7 +12,7 @@ general:
 
 machine:
   environment:
-    XCODE_WORKSPACE='ios-ci-test.xcworkspace'
+    XCODE_WORKSPACE: 'ios-ci-test.xcworkspace'
     XCODE_SCHEME: ios-ci-test
     BUILD_DIR: build
     LANG: en_US.UTF-8
