@@ -14,6 +14,7 @@ machine:
   environment:
     XCODE_WORKSPACE: 'ios-ci-test.xcworkspace'
     XCODE_SCHEME: ios-ci-test
+    APPNAME: ios-ci-test
     BUILD_DIR: build
     LANG: en_US.UTF-8
   xcode:
@@ -32,7 +33,7 @@ test:
       -configuration Debug
       -derivedDataPath "$BUILD_DIR"
       build
-#    - sh ../uiautomation.sh build/Build/Products/Debug-iphonesimulator/ios-ci-test.app ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
+    - sh ../uiautomation.sh ../uiautomation/tests.js ru_RU "iPhone 6 (8.4 Simulator)"
 
 deployment:
   staging:

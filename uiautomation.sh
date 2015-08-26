@@ -1,8 +1,8 @@
 . ../options.sh
-  bundle_dir="$1"
-  automation_script="$2"
-  language="$3"
-  simulator="$4"
+  bundle_dir=$BUILD_DIR/Build/Products/Debug-iphonesimulator/$APPNAME.app
+  automation_script="$1"
+  language="$2"
+  simulator="$3"
 
   trace_results_dir="$CIRCLE_ARTIFACTS"
 
