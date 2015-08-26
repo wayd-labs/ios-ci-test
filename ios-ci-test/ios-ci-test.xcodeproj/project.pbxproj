@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		73C674141B8DC51C00943FF4 /* uiautomation in Resources */ = {isa = PBXBuildFile; fileRef = 73C674131B8DC51C00943FF4 /* uiautomation */; };
+		73C674161B8DC70600943FF4 /* circle.yml in Resources */ = {isa = PBXBuildFile; fileRef = 73C674151B8DC70600943FF4 /* circle.yml */; };
 		73D44F911B8DB8CA0059A8E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D44F901B8DB8CA0059A8E1 /* AppDelegate.swift */; };
 		73D44F931B8DB8CA0059A8E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D44F921B8DB8CA0059A8E1 /* ViewController.swift */; };
 		73D44F961B8DB8CA0059A8E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73D44F941B8DB8CA0059A8E1 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		52915E2E762D14F2384AB590 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C674131B8DC51C00943FF4 /* uiautomation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = uiautomation; path = ../uiautomation; sourceTree = "<group>"; };
+		73C674151B8DC70600943FF4 /* circle.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = circle.yml; path = ../circle.yml; sourceTree = "<group>"; };
 		73D44F8B1B8DB8CA0059A8E1 /* ios-ci-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-ci-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D44F8F1B8DB8CA0059A8E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73D44F901B8DB8CA0059A8E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		73D44F821B8DB8CA0059A8E1 = {
 			isa = PBXGroup;
 			children = (
+				73C674151B8DC70600943FF4 /* circle.yml */,
 				73C674131B8DC51C00943FF4 /* uiautomation */,
 				73D44F8D1B8DB8CA0059A8E1 /* ios-ci-test */,
 				73D44FA31B8DB8CA0059A8E1 /* ios-ci-testTests */,
@@ -223,6 +226,7 @@
 			files = (
 				73D44F961B8DB8CA0059A8E1 /* Main.storyboard in Resources */,
 				73D44F9B1B8DB8CA0059A8E1 /* LaunchScreen.xib in Resources */,
+				73C674161B8DC70600943FF4 /* circle.yml in Resources */,
 				73D44F981B8DB8CA0059A8E1 /* Images.xcassets in Resources */,
 				73C674141B8DC51C00943FF4 /* uiautomation in Resources */,
 			);
