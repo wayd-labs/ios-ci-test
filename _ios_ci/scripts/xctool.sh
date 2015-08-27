@@ -1,14 +1,11 @@
-. ../options.sh
-
-XCODE_WORKSPACE='ios-ci-test.xcworkspace'
-XCODE_SCHEME='ios-ci-test'
+. $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/options.sh
 
 xctool -reporter pretty \
   -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest' \
   -sdk iphonesimulator \
   -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" \
   derivedDataPath="$BUILD_DIR" \
-  clean build
+  build
 #  PRODUCT_NAME=app\
 #  clean build
 #  DSTROOT=tmp \

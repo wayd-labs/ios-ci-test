@@ -1,7 +1,12 @@
-CIRCLE_ARTIFACTS=artifacts
-BUILD_DIR=build
-DEVELOPER_NAME='iPhone Developer: Wayd Timashev'
+SCRIPTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+TESTS=$SCRIPTS/../tests
 
+TMPDIR=$SCRIPTS/../tmp
+
+CIRCLE_ARTIFACTS=$TMPDIR/artifacts
+BUILD_DIR=$TMPDIR/build
+
+DEVELOPER_NAME='iPhone Developer: Wayd Timashev'
 APPNAME='ios-ci-test'
 
 XCODE_WORKSPACE='ios-ci-test.xcworkspace'
