@@ -1,14 +1,7 @@
-// This is an example configuration file to be used with ui-screen-shooter
-// It is designed to work with the Hello World International application
-// Please copy to config-automation.js and edit for your needs
-// See also http://cocoamanifest.net/features/#ui_automation for automation help
-
-
 // Pull in the special function, captureLocalizedScreenshot(), that names files
 // according to device, language, and orientation
-#import "ui-screen-shooter/capture.js"
-//#import "../Pods/tuneup_js/tuneup.js"
-#import "./tuneup_js/tuneup.js"
+#import "capture.js"
+#import "tuneup_js/tuneup.js"
 #import "common.js"
 
 mytest("Login screen", function(target, app) {
